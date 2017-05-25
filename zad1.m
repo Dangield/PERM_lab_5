@@ -35,12 +35,12 @@ audiowrite('w1.wav',w1,Fs)
 % plot(abs(fft_w1(1:(Fs/2))))
 
 f2_fc=0.2;
-f2_M=200;
+f2_M=1000;
 for i=0:f2_M
     if i==f2_M/2
         f2_h(i+1)=2*pi*f2_fc;
     else
-        f2_h(i+1)=sin(2*pi*f2_fc*(i-f2_M/2))/(i-f2_M/2)*(0.42-0.5*cos(2*pi*i/f2_M)+0.08*cos(4*pi*i/f2_M));
+        f2_h(i+1)=sin(2*pi*f2_fc*(i-f2_M/2))*(0.42-0.5*cos(2*pi*i/f2_M)+0.08*cos(4*pi*i/f2_M))/(i-f2_M/2);
     end
 end
 f2_K=1/sum(f2_h);
