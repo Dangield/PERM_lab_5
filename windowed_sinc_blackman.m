@@ -1,6 +1,6 @@
 function [ signal_out ] = windowed_sinc_blackman( signal_in, fc2, fc1, M )
 %WINDOWED_SINC_BLACKMAN Summary of this function goes here
-%   Detailed explanation goes here
+%   Detailed explanation goes herebuzz2edit
    signal_length = length(signal_in);
    h1 = zeros(M, 1);
    for i=0:M
@@ -30,10 +30,11 @@ function [ signal_out ] = windowed_sinc_blackman( signal_in, fc2, fc1, M )
    
    h = conv(h1, h2);
    signal_out = conv(h, signal_in);
+%    figure
 %    in = abs(fft(signal_in));
 %    out = abs(fft(signal_out));
 %    plot(in(1:signal_length/2));
 %    hold on
-%    plot(out(1:signal_length/2));
+%    plot(out(1:signal_length/2),'r');
 end
 

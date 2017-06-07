@@ -3,6 +3,7 @@ clear all
 [b,Fs]=audioread('noi_b.wav');
 f=audioread('noi_f.wav');
 w=audioread('noi_w.wav');
+ori=audioread('ori.wav');
 fft_b=fft(b);
 fft_f=fft(f);
 fft_w=fft(w);
@@ -101,3 +102,19 @@ fft_w3=fft(w3);
 audiowrite('b3.wav',b3,Fs)
 audiowrite('f3.wav',f3,Fs)
 audiowrite('w3.wav',w3,Fs)
+
+
+peaksnr(1,1)=psnr(b(1:length(ori)),ori);
+peaksnr(1,2)=psnr(b1(1:length(ori))',ori);
+peaksnr(1,3)=psnr(b2(1:length(ori)),ori);
+peaksnr(1,4)=psnr(b3(1:length(ori))',ori);
+peaksnr(2,1)=psnr(f(1:length(ori)),ori);
+peaksnr(2,2)=psnr(f1(1:length(ori))',ori);
+peaksnr(2,3)=psnr(f2(1:length(ori)),ori);
+peaksnr(2,4)=psnr(f3(1:length(ori))',ori);
+peaksnr(3,1)=psnr(w(1:length(ori)),ori);
+peaksnr(3,2)=psnr(w1(1:length(ori))',ori);
+peaksnr(3,3)=psnr(w2(1:length(ori)),ori);
+peaksnr(3,4)=psnr(w3(1:length(ori))',ori);
+peaksnr
+[x1,x2,D]=alignsignals(b,ori);
