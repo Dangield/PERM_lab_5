@@ -7,19 +7,6 @@ fft_buzz2=fft(buzz2);
 % plot(abs(fft_buzz2))
 % hold on
 
-buzz2extracted=buzz2;
-for i=1:length(buzz2)
-    if i/fs<3 || (1/fs>4 && 1/fs<7) || i/fs>8
-        buzz2extracted(i)=0;
-    else
-        buzz2extracted(i)=buzz2(i);
-    end
-end
-fft_buzz2e=fft(buzz2extracted);
-comparison=abs(fft_buzz2(1:length(buzz2)/2))-abs(fft_buzz2e(1:length(buzz2)/2));
-% figure
-% plot(comparison)
-
 buzz2filt = windowed_sinc_blackman(buzz2, 0.25, 0.5, 100);
 figure
 plot(abs(buzz2filt))
