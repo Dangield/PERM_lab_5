@@ -3,9 +3,9 @@ close all
 
 [buzz2, fs] = audioread('buzz2.wav');
 fft_buzz2=fft(buzz2);
-figure
-plot(abs(fft_buzz2))
-hold on
+% figure
+% plot(abs(fft_buzz2))
+% hold on
 
 buzz2extracted=buzz2;
 for i=1:length(buzz2)
@@ -17,15 +17,16 @@ for i=1:length(buzz2)
 end
 fft_buzz2e=fft(buzz2extracted);
 comparison=abs(fft_buzz2(1:length(buzz2)/2))-abs(fft_buzz2e(1:length(buzz2)/2));
-figure
-plot(comparison)
+% figure
+% plot(comparison)
 
-buzz2filt = windowed_sinc_blackman(buzz2, 0.2, 0.25, 100);
+buzz2filt = windowed_sinc_blackman(buzz2, 0.25, 0.5, 100);
 figure
-plot(abs(fft(buzz2filt)))
+plot(abs(buzz2filt))
+% plot(abs(fft(buzz2filt)))
 
 % Thresholding
-buzz2filt = thresholding(buzz2filt, 0.0012);
+buzz2filt = thresholding(buzz2filt, 0.0023);
 figure
 plot(buzz2filt);
 
